@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/recyclerView"
+   <fragment
+       android:id="@+id/firstFragmentContainer"
+       android:name="com.example.myapplicationrecycler.FirstFragment"
        android:layout_width="match_parent"
-       android:layout_height="wrap_content" />
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       tools:layout="@layout/fragment_first" />
 
-   <Button
-       android:id="@+id/btnAdd"
-       android:text="Добавить"
-       android:layout_gravity="center"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"/>
+   <fragment
+       android:id="@+id/secondFragmentContainer"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       android:name="com.example.myapplicationrecycler.TwoFragment"
+       tools:layout="@layout/fragment_two"
+       />
+
+   <FrameLayout
+       android:id="@+id/fragmentContainer"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="1"
+       />
 
 
 </LinearLayout>

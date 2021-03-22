@@ -8,6 +8,11 @@ public class ContactModel implements Serializable {
     private String phone;
     private String image;
 
+    public ContactModel(String name, String phone, String image) {
+        this.name = name;
+        this.phone = phone;
+        this.image = image;
+    }
     public String getName() {
         return name;
     }
@@ -31,7 +36,6 @@ public class ContactModel implements Serializable {
     public void setImage(String image) {
         this.image = image;
     }
-
 
 
 }

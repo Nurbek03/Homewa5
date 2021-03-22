@@ -21,6 +21,7 @@ public class ApplicationActivity extends AppCompatActivity {
     private EditText etPhone;
     private Button btnSave;
     Uri imageData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,16 +41,14 @@ public class ApplicationActivity extends AppCompatActivity {
 
                 String name = etName.getText().toString();
                 String phone = etPhone.getText().toString();
-                String  image = imageData.toString();
-                ContactModel model = new ContactModel();
-
+                ContactModel model = new ContactModel("", "", "");
+                String image = imageData.toString();
                 model.setName(name);
                 model.setPhone(phone);
                 model.setImage(image);
-
-                Intent intent = new Intent();
-                intent.putExtra(MainActivity.KEY,model);
-                setResult(RESULT_OK,intent);
+                Intent intent =getIntent();
+                intent.putExtra(MainActivity.KEY, model);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         });
@@ -60,7 +59,7 @@ public class ApplicationActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
-                startActivityForResult(intent,2);
+                startActivityForResult(intent, 2);
             }
         });
     }
@@ -69,8 +68,8 @@ public class ApplicationActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 2 && resultCode == RESULT_OK){
-             imageData = data.getData();
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            imageData = data.getData();
             Glide.with(this)
                     .load(imageData)
                     .apply(RequestOptions.circleCropTransform())
